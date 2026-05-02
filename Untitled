@@ -1,0 +1,131 @@
+# Multilingual Text Preprocessing Engine
+
+A modular NLP system built with **FastAPI + Docker** that supports **English and Arabic text preprocessing** with a configurable pipeline and web-based GUI.
+
+---
+
+## 🚀 Features
+
+### English NLP
+- Tokenization
+- Stopword removal
+- Stemming (Porter Stemmer)
+- Lemmatization (WordNet)
+- Regex cleaning
+
+### Arabic NLP
+- Tashkeel removal
+- Tatweel removal
+- Alef/Hamza normalization
+- Stopword removal
+- Stemming (ISRI Stemmer)
+
+### System Features
+- Dynamic preprocessing pipeline
+- Language detection & validation
+- REST API (FastAPI)
+- Web GUI (HTML/CSS/JS)
+- Fully Dockerized (single container)
+
+---
+
+## 📁 Project Structure
+src/
+├── config/
+├── models/
+├── routers/
+├── services/
+├── utils/
+├── templates/
+├── static/
+└── main.py
+
+Dockerfile
+requirements.txt
+start.sh
+
+
+---
+
+## ⚙️ Installation (Local)
+
+### 1. Clone Project
+```bash
+git clone <repo-url>
+cd text-preprocessor
+2. Create Virtual Environment
+python -m venv venv
+3. Activate Environment
+
+Windows:
+
+venv\Scripts\activate
+
+Mac/Linux:
+
+source venv/bin/activate
+4. Install Dependencies
+pip install -r requirements.txt
+5. Run Application
+uvicorn src.main:app --reload
+🌐 Run in Browser
+GUI:
+http://127.0.0.1:8000/
+API Docs (Swagger):
+http://127.0.0.1:8000/docs
+🐳 Docker Deployment (Recommended)
+1. Build Image
+docker build -t text-preprocessor .
+2. Run Container
+docker run -p 8000:8000 text-preprocessor
+3. Access App
+
+GUI:
+
+http://localhost:8000/
+
+API:
+
+http://localhost:8000/docs
+📡 API Usage
+Endpoint:
+POST /preprocess
+Request Example:
+{
+  "text": "Hello world! Welcome to AI.",
+  "language": "english",
+  "remove_stopwords": true,
+  "stemming": true,
+  "lemmatization": false,
+  "normalization": true
+}
+Response Example:
+{
+  "original_text": "Hello world! Welcome to AI.",
+  "processed_text": "hello world welcom ai",
+  "language": "english",
+  "applied_steps": {
+    "remove_stopwords": true,
+    "stemming": true,
+    "lemmatization": false,
+    "normalization": true
+  },
+  "success": true,
+  "message": "Text preprocessing completed successfully."
+}
+🖥️ GUI Usage
+
+Open browser:
+
+http://localhost:8000/
+Enter text
+Select:
+Language (English / Arabic)
+Options (Stopwords, Stemming, etc.)
+
+Click:
+
+Process Text
+View:
+Original Text
+Processed Text
