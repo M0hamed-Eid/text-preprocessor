@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Preprocessing Engine</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Multilingual Text Preprocessing Engine</h1>
+
+    <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+
+    <label for="language">Select Language:</label>
+    <select id="language">
+        <option value="english">English</option>
+        <option value="arabic">Arabic</option>
+    </select>
+
+    <div class="options">
+        <label><input type="checkbox" id="remove_stopwords" checked> Remove Stopwords</label>
+        <label><input type="checkbox" id="stemming"> Stemming</label>
+        <label><input type="checkbox" id="lemmatization"> Lemmatization</label>
+        <label><input type="checkbox" id="normalization" checked> Normalization</label>
+    </div>
+
+    <button onclick="submitText()">Process Text</button>
+
+    <div class="results">
+        <h3>Original Text:</h3>
+        <p id="originalText"></p>
+
+        <h3>Processed Text:</h3>
+        <p id="processedText"></p>
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

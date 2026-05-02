@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
 from src.routers.preprocess_router import router as preprocess_router
 
 app = FastAPI(
@@ -7,18 +10,24 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Static files
+app.mount("/static", StaticFiles(directory="src/static"), name="static")
+
+# Templates
+templates = Jinja2Templates(directory="src/templates")
+
+# API Router
 app.include_router(preprocess_router)
 
 
 @app.get("/")
-def root():
-    return {
-        "message": "Welcome to the Multilingual Text Preprocessing Engine"
-    }
+def frontend_home(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request}
+    )
 
 
 @app.get("/health")
 def health_check():
-    return {
-        "status": "running"
-    }
+    return {"status": "running"}
