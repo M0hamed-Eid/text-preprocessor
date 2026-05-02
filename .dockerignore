@@ -1,7 +1,14 @@
 __pycache__
 *.pyc
+*.pyo
+*.pyd
 .env
 venv
 .idea
 .vscode
 .git
+__pycache__
+.text_pre_venv
+.idea
+Dockerfile
+README.md
